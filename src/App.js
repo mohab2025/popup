@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+// import firebase from "./firebase";
+import PopUp from "./components/orderPop/orderPopup";
+import { useState } from "react";
+import CancelPop from "./components/cancalPop/CancelPop";
 
 function App() {
+  const [buttonPopUp, setButtonPopUp] = useState(false);
+  //   React.useEffect(() => {
+  //     const msg = firebase.messaging();
+  //     msg
+  //       .requestPermission()
+  //       .then(() => {
+  //         return msg.getToken();
+  //       })
+  //       .then((data) => {
+  //         console.warn("token", data);
+  //       });
+  //   });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <main>
+        <h1> React Pop up </h1>
+        <br></br>
+        <button
+          onClick={() => {
+            setButtonPopUp(true);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          {" "}
+          Open PopUp
+        </button>
+      </main>
+      <PopUp trigger={buttonPopUp} setTrigger={setButtonPopUp}></PopUp>
     </div>
   );
 }
